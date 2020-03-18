@@ -3,22 +3,23 @@
 const userForm = new UserForm();
 
 userForm.loginFormCallback = data => {
-    return ApiConnector.login(data, (err, data) => {
-        if (data) {
+    return ApiConnector.login(data, response => {
+        if (response) {
             location.reload();
-        } else if (err) {
-           userForm.setRegisterErrorMessage('Ошибка авторизации!');
+        } else if (error) {
+           userForm.setRegisterErrorMessage(error);
         }
     });
 }
 
 userForm.registerFormCallback = data => {
-    return ApiConnector.register(data, (err, data) => {
-        if (data) {
+    return ApiConnector.register(data, response => {
+        if (response) {
             location.reload();
-        } else if (err) {
-            userForm.setLoginErrorMessage('Ошибка при регистрации!')
+        } else if (error) {
+            userForm.setLoginErrorMessage(error);
         }
     })
 }
+
 
